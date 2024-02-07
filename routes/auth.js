@@ -1,0 +1,86 @@
+const router = require("express").Router();
+const passport = require("passport");
+const { User } = require("../models/user");
+const CLIENT_URL = "http://localhost:3000/";
+const successRedirectUrl = "http://localhost:3000/login/success";
+const errorRedirectUrl = "http://localhost:3000/login/failed";
+
+
+
+//GOOGLE AUTH------------------------------------------------------------------------------------
+
+router.get(
+  "/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+router.get(
+  "/google/callback",
+  passport.authenticate("google", {
+    failureRedirect: errorRedirectUrl,
+    successRedirect: successRedirectUrl,
+  })
+);
+
+//GITHUB AUTH------------------------------------------------------------------------------------
+
+router.get(
+  "/github",
+  passport.authenticate("github", { scope: ["profile", "email"] })
+);
+
+router.get(
+  "/github/callback",
+  passport.authenticate("github", {
+    failureRedirect: errorRedirectUrl,
+    successRedirect: successRedirectUrl,
+  })
+);
+
+//FACEBOOK AUTH------------------------------------------------------------------------------------
+
+router.get(
+  "/facebook",
+  passport.authenticate("facebook", { scope: ["profile", "email"] })
+);
+
+router.get(
+  "/facebook/callback",
+  passport.authenticate("facebook", {
+    failureRedirect: errorRedirectUrl,
+    successRedirect: successRedirectUrl,
+  })
+);
+
+//LOGIN SUCCESS-----------------------------------------------------------------------
+
+router.get("/login/success", (req, res) => {
+  console.log(req.user);
+  try {
+    if (req.user) {
+      res.status(200).json({
+        success: true,
+        message: "successfull",
+        user: req.user,
+        cookies: req.cookies,
+      });
+    } else {
+      res.status(404).json({
+        message: "failure",
+      });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//LOGIN FAILED-----------------------------------------------------------------------
+
+router.get("/login/failed", (req, res) => {
+  res.status(401).json({
+    success: false,
+    message: "failure",
+  });
+});
+
+module.exports = router;
