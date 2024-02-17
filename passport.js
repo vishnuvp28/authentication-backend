@@ -23,6 +23,8 @@ passport.use(
 
       clientSecret: GOOGLE_CLIENT_SECRET,
       callbackURL: "https://multi-oauth.onrender.com/auth/google/callback",
+      // callbackURL: "http://localhost:5000/auth/google/callback",
+
       passReqToCallback: true,
     },
     async (req, acccessToken, refreshToken, profile, cb) => {
@@ -78,6 +80,7 @@ passport.use(
       clientID: GITHUB_CLIENT_ID,
       clientSecret: GITHUB_CLIENT_SECRET,
       callbackURL: "https://multi-oauth.onrender.com/auth/github/callback",
+      // callbackURL: "http://localhost:5000/auth/github/callback",
     },
     async (req, acccessToken, refreshToken, profile, cb) => {
       console.log("Acess Token Refresh Token", acccessToken);
@@ -130,6 +133,7 @@ passport.use(
       clientID: FACEBOOK_APP_ID,
       clientSecret: FACEBOOK_APP_SECRET,
       callbackURL: "https://multi-oauth.onrender.com/auth/facebook/callback",
+      // callbackURL: "http://localhost:5000/auth/facebook/callback",
     },
     async (req, acccessToken, refreshToken, profile, cb) => {
       // console.log("Acess Token Refresh Token", acccessToken);

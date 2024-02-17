@@ -11,7 +11,9 @@ const deleteRoute=require("./routes/delete")
 
 
 const app = express();
-
+app.use(
+  cors()
+);
 
 app.use(express.json());
 app.use(
@@ -24,13 +26,7 @@ app.use(session({ secret: "keyboard cat", cookie: { maxAge: 60000 } }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
-  })
-);
+
 app.get("/", (req, res) => {
   res.send({
     message: "Hii I am VP",

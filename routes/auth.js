@@ -4,7 +4,8 @@ const { User } = require("../models/user");
 const CLIENT_URL = "http://localhost:3000/";
 const successRedirectUrl = "https://peaceful-starlight-2210e6.netlify.app/login/success";
 const errorRedirectUrl = "https://peaceful-starlight-2210e6.netlify.app/login/failed";
-
+// const successRedirectUrl = "http://localhost:3000/login/success";
+// const errorRedirectUrl = "http://localhost:3000/login/failed";
 
 
 //GOOGLE AUTH------------------------------------------------------------------------------------
