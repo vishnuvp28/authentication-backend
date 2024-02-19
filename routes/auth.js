@@ -55,14 +55,15 @@ router.get(
 
 //LOGIN SUCCESS-----------------------------------------------------------------------
 
-router.get("/login/success", (req, res) => {
-  console.log(req.user);
+router.get("/login/success",async (req, res) => {
+ const result= await User.find({})
+  
   try {
-    if (req.user) {
+    if (result) {
       res.status(200).json({
         success: true,
         message: "successfull",
-        user: req.user,
+        user: result,
         cookies: req.cookies,
       });
     } else {
@@ -78,6 +79,7 @@ router.get("/login/success", (req, res) => {
 //LOGIN FAILED-----------------------------------------------------------------------
 
 router.get("/login/failed", (req, res) => {
+  console.log("Failed",req.user)
   res.status(401).json({
     success: false,
     message: "failure",
