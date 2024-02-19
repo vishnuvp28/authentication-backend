@@ -4,13 +4,14 @@ const { User } = require("../models/user");
 
 router.post("/user", async (req, res) => {
   try {
-    const {email}= req.body;
+    // const {email}= req.body;
+    const queryResult= await User.find({})
     // console.log("user data in delete", user);
     console.log("email",email);
-    if (email) {
-      const email = email;
+    if (queryResult) {
+      // const email = email;
       // await User.findByIdAndDelete(email);
-      const result = await User.findByIdAndDelete({ email:email });
+      const result = await User.findByIdAndDelete({ email:queryResult.email });
       console.log("Deleted");
       // if (result.deletedCount === 0) {
       //   return res.status(404).json({ error: "emp id not found" });
