@@ -28,14 +28,14 @@ passport.use(
       passReqToCallback: true,
     },
     async (req, acccessToken, refreshToken, profile, cb) => {
-      // console.log("Acess Token Refresh Token", acccessToken);
-      // console.log("refresh token", refreshToken);
+      console.log("Acess Token Refresh Token", acccessToken);
+      console.log("refresh token", refreshToken);
       const { id, name, emails, photos } = profile;
-      // console.log(id);
-      // console.log(name);
-      // console.log(emails);
-      // console.log(photos);
-      // console.log(profile);
+      console.log(id);
+      console.log(name);
+      console.log(emails);
+      console.log(photos);
+      console.log(profile);
       const email = emails[0].value;
       const emailVerified = emails[0].verified;
       const fullName = `${name.givenName} ${name.familyName}`;
