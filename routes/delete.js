@@ -8,11 +8,20 @@ router.post("/user", async (req, res) => {
     const queryResult= await User.find({})
     // console.log("user data in delete", user);
     console.log("email",queryResult);
+    console.log("name",queryResult.name);
+    console.log("_id",queryResult._id);
+
+
     if (queryResult) {
       // const email = email;
       // await User.findByIdAndDelete(email);
-      const result = await User.deleteOne({ email:queryResult.email });
-      console.log("Deleted");
+      const result = await User.deleteOne({ _id:queryResult._id });
+      console.log("result",result);
+      if(result){
+        console.log("Deleted");
+      }
+      
+      
       // if (result.deletedCount === 0) {
       //   return res.status(404).json({ error: "emp id not found" });
       // }
