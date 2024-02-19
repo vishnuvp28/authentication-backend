@@ -4,11 +4,11 @@ const { User } = require("../models/user");
 
 router.post("/user", async (req, res) => {
   try {
-    const user = req.body;
-    console.log("user data in delete", user);
+    const {_id }= req.body.user;
+    // console.log("user data in delete", user);
     // console.log(req.user);
-    if (user) {
-      const id = user._id;
+    if (_id) {
+      const id = _id;
       // await User.findByIdAndDelete(email);
       const result = await User.findByIdAndDelete({ _id: id });
       console.log("Deleted");
