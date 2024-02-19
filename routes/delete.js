@@ -7,7 +7,7 @@ router.post("/user", async (req, res) => {
     // const {email}= req.body;
     const queryResult= await User.find({})
     // console.log("user data in delete", user);
-    console.log("email",email);
+    console.log("email",queryResult.email);
     if (queryResult) {
       // const email = email;
       // await User.findByIdAndDelete(email);
