@@ -4,18 +4,18 @@ const { User } = require("../models/user");
 
 router.post("/user", async (req, res) => {
   try {
-    const {_id }= req.body;
+    const {email}= req.body;
     // console.log("user data in delete", user);
-    // console.log(req.user);
-    if (_id) {
-      const id = _id;
+    console.log(email);
+    if (email) {
+      const email = email;
       // await User.findByIdAndDelete(email);
-      const result = await User.findByIdAndDelete({ _id: id });
+      const result = await User.findByIdAndDelete({ email:email });
       console.log("Deleted");
-      if (result.deletedCount === 0) {
-        return res.status(404).json({ error: "emp id not found" });
-      }
-      return res.status(200).json({ message: "deleted" });
+      // if (result.deletedCount === 0) {
+      //   return res.status(404).json({ error: "emp id not found" });
+      // }
+      return res.status(200).json({ message: "deleted", data :result});
       // res.redirect(CLIENT_URL);
     }
     // req.logout();
