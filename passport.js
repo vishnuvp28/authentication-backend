@@ -5,8 +5,8 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const { User } = require("./models/user");
 
 const GOOGLE_CLIENT_ID =
-  "812271762583-t5kh3j398kngltlr5dihhiv18pdfr6he.apps.googleusercontent.com";
-const GOOGLE_CLIENT_SECRET = "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";
+  "812271762583-73iq0lmg5l6uleavpfeb8esofu65thgm.apps.googleusercontent.com";
+const GOOGLE_CLIENT_SECRET = "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";
 
 GITHUB_CLIENT_ID = "add54727787114148f25";
 GITHUB_CLIENT_SECRET = "42b4444a1822a615b5a6f5d27d1ec37b540419f4";
@@ -23,19 +23,18 @@ passport.use(
 
       clientSecret: GOOGLE_CLIENT_SECRET,
       callbackURL: "https://multi-oauth.onrender.com/auth/google/callback",
-      // callbackURL: "http://localhost:5000/auth/google/callback",
 
       passReqToCallback: true,
     },
     async (req, acccessToken, refreshToken, profile, cb) => {
-      console.log("Acess Token Refresh Token", acccessToken);
-      console.log("refresh token", refreshToken);
+      // console.log("Acess Token Refresh Token", acccessToken);
+      // console.log("refresh token", refreshToken);
       const { id, name, emails, photos } = profile;
-      console.log(id);
-      console.log(name);
-      console.log(emails);
-      console.log(photos);
-      console.log(profile);
+      // console.log(id);
+      // console.log(name);
+      // console.log(emails);
+      // console.log(photos);
+      // console.log(profile);
       const email = emails[0].value;
       const emailVerified = emails[0].verified;
       const fullName = `${name.givenName} ${name.familyName}`;
@@ -139,11 +138,11 @@ passport.use(
       // console.log("Acess Token Refresh Token", acccessToken);
       // console.log("refresh token", refreshToken);
       const { id, name, emails, photos } = profile;
-      console.log(id);
-      console.log(name);
-      console.log(emails);
-      console.log(photos);
-      console.log(profile);
+      // console.log(id);
+      // console.log(name);
+      // console.log(emails);
+      // console.log(photos);
+      // console.log(profile);
       const email = emails[0].value;
       const emailVerified = emails[0].verified;
       const fullName = `${name.givenName} ${name.familyName}`;
